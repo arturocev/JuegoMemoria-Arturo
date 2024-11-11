@@ -83,12 +83,17 @@ class Juego: UIViewController {
             botonPuntuacion.alpha = 1
             
             puntuacionActual = String(puntuacionTotal)
-            puntuaciones.insert(puntuacionActual, at: 0)
+            
             
         }
     }
     
     @IBAction func verPuntuacionPulsado(_ sender: Any) {
+        
+        usuario.score = puntuacionActual
+        
+        puntuaciones.insert(usuario, at: 0)
+        
         verPuntuacion()
     }
     

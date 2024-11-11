@@ -14,11 +14,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var imagen2UI: UIImageView!
     @IBOutlet weak var botonJugarUI: UIButton!
     @IBOutlet weak var ingresarNombre: UITextField!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         inicio()
+        usuario = Usuario()
         let numeroRandom = insertarImagenes(listaImagenes: listaImagenes)
         var numeroRandom2 = insertarImagenes(listaImagenes: listaImagenes)
         
@@ -58,10 +60,9 @@ class ViewController: UIViewController {
     
     @IBAction func escribirNombre(_ sender: Any) {
         
-        let usuario = Usuario(nombre: ingresarNombre.text!)
-        
         let valido = usuario.validarNombre(nombre: ingresarNombre.text!)
         if valido == true {
+            usuario.nombre = ingresarNombre.text!
             nombreValido()
         } else {
             error()

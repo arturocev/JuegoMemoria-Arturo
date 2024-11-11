@@ -11,6 +11,10 @@ class Usuario {
         self.nombre = nombre
     }
     
+    init(score: String) {
+        self.score = score
+    }
+    
     func tieneCaracteresEspeciales(texto: String) -> Bool {
         let especiales = "!¡$%/()?¿+-*,.;:{}[]"
         for letra in texto {

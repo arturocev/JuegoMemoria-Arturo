@@ -12,15 +12,16 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let celda = tableView.dequeueReusableCell(withIdentifier: "IdCelda", for: indexPath)
-        celda.textLabel?.text = puntuaciones[indexPath.row]
+        celda.textLabel?.text = puntuaciones[indexPath.row].nombre + ": " + puntuaciones[indexPath.row].score
         return celda
-
+        
     }
     
     
     @IBOutlet weak var tablaPuntuacion: UITableView!
     @IBOutlet weak var resultadoActual: UILabel!
     @IBOutlet weak var vueltaInicio: UIButton!
+    @IBOutlet weak var botonOnline: UIButton!
     
     
     override func viewDidLoad() {
@@ -42,5 +43,13 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         performSegue(withIdentifier: "Inicio", sender: nil)
         
+    }
+    
+    @IBAction func botonOnlinePulsado(_ sender: Any) {
+        verPuntuacionesOnline()
+    }
+    
+    func verPuntuacionesOnline() {
+        performSegue(withIdentifier: "PuntuacionOnline", sender: nil)
     }
 }

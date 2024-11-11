@@ -11,5 +11,6 @@ import UIKit
 let listaImagenes = [UIImage(named: "batido"), UIImage(named: "queso"), UIImage(named: "patata"), UIImage(named: "sandwich")]
 var idImagen1 = -1
 var idImagen2 = -1
-var puntuaciones = [String]()
+var puntuaciones = [Usuario]()
 var puntuacionActual = ""
+var usuario = Usuario()

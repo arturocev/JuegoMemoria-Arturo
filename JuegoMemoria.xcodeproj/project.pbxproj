@@ -17,6 +17,7 @@
 		71493E9E2CC8F48100750BCC /* Juego.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71493E9D2CC8F48100750BCC /* Juego.swift */; };
 		71493EA12CC8F49500750BCC /* VariablesGlobales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71493EA02CC8F49500750BCC /* VariablesGlobales.swift */; };
 		71AF01812CD0EAE90057E268 /* Puntuacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AF01802CD0EAE90057E268 /* Puntuacion.swift */; };
+		7FB055BD2CDB853500966474 /* PuntacionesOnline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB055BC2CDB853500966474 /* PuntacionesOnline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		71493E9D2CC8F48100750BCC /* Juego.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juego.swift; sourceTree = "<group>"; };
 		71493EA02CC8F49500750BCC /* VariablesGlobales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariablesGlobales.swift; sourceTree = "<group>"; };
 		71AF01802CD0EAE90057E268 /* Puntuacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puntuacion.swift; sourceTree = "<group>"; };
+		7FB055BC2CDB853500966474 /* PuntacionesOnline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuntacionesOnline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				7144BE142CC7AD3F00809EF5 /* Main.storyboard */,
 				7105EDA32CD246C2008B0EFE /* Usuario.swift */,
 				71AF01802CD0EAE90057E268 /* Puntuacion.swift */,
+				7FB055BC2CDB853500966474 /* PuntacionesOnline.swift */,
 				7144BE172CC7AD4000809EF5 /* Assets.xcassets */,
 				7144BE192CC7AD4000809EF5 /* LaunchScreen.storyboard */,
 				7144BE1C2CC7AD4000809EF5 /* Info.plist */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FB055BD2CDB853500966474 /* PuntacionesOnline.swift in Sources */,
 				71493E9E2CC8F48100750BCC /* Juego.swift in Sources */,
 				71493EA12CC8F49500750BCC /* VariablesGlobales.swift in Sources */,
 				7105EDA42CD246C2008B0EFE /* Usuario.swift in Sources */,
