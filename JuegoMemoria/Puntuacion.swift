@@ -12,7 +12,7 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let celda = tableView.dequeueReusableCell(withIdentifier: "IdCelda", for: indexPath)
-        celda.textLabel?.text = puntuaciones[indexPath.row].nombre + ": " + puntuaciones[indexPath.row].score
+        celda.textLabel?.text = puntuaciones[indexPath.row].name + ": " + puntuaciones[indexPath.row].score.description
         return celda
         
     }
@@ -30,7 +30,7 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tablaPuntuacion.dataSource = self
         tablaPuntuacion.delegate = self
         
-        resultadoActual.text = "RESULTADO ACTUAL: " + puntuacionActual
+        resultadoActual.text = "RESULTADO ACTUAL: " + puntuacionActual.description
         
     }
     

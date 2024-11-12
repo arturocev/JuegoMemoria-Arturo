@@ -82,7 +82,7 @@ class Juego: UIViewController {
             botonPuntuacion.isEnabled = true
             botonPuntuacion.alpha = 1
             
-            puntuacionActual = String(puntuacionTotal)
+            puntuacionActual = puntuacionTotal
             
             
         }

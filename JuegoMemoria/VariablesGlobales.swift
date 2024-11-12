@@ -12,5 +12,6 @@ let listaImagenes = [UIImage(named: "batido"), UIImage(named: "queso"), UIImage(
 var idImagen1 = -1
 var idImagen2 = -1
 var puntuaciones = [Usuario]()
-var puntuacionActual = ""
+var puntuacionActual = 0
 var usuario = Usuario()
+var users: [Usuario] = []

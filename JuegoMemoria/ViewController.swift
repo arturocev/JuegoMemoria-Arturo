@@ -60,9 +60,9 @@ class ViewController: UIViewController {
     
     @IBAction func escribirNombre(_ sender: Any) {
         
-        let valido = usuario.validarNombre(nombre: ingresarNombre.text!)
+        let valido = usuario.validarNombre(name: ingresarNombre.text!)
         if valido == true {
-            usuario.nombre = ingresarNombre.text!
+            usuario.name = ingresarNombre.text!
             nombreValido()
         } else {
             error()

@@ -1,18 +1,24 @@
 import Foundation
 
 
-class Usuario {
-    var nombre = ""
-    var score = ""
+class Usuario : Decodable {
+    var name = ""
+    var score = 0
+    
     
     init() {}
     
-    init(nombre: String) {
-        self.nombre = nombre
+    init(name: String) {
+        self.name = name
     }
     
-    init(score: String) {
+    init(score: Int) {
         self.score = score
+    }
+    
+    init(json: [String: Any]) {
+            name = json["user"] as? String ?? ""
+            score = json["pass"] as? Int ?? 0
     }
     
     func tieneCaracteresEspeciales(texto: String) -> Bool {
@@ -27,13 +33,13 @@ class Usuario {
         return false
     }
 
-    func validarNombre(nombre: String) -> Bool {
-        if nombre.isEmpty {
+    func validarNombre(name: String) -> Bool {
+        if name.isEmpty {
             return false
         }
-        let maximo10Letras = nombre.count <= 10
-        let primeraLetra = !nombre.first!.isNumber
-        let sinEspeciales = !tieneCaracteresEspeciales(texto: nombre)
+        let maximo10Letras = name.count <= 10
+        let primeraLetra = !name.first!.isNumber
+        let sinEspeciales = !tieneCaracteresEspeciales(texto: name)
         return maximo10Letras && primeraLetra && sinEspeciales
     }
 }
