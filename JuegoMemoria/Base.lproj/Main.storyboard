@@ -266,8 +266,20 @@
                                     <action selector="vueltaInicioPulsado:" destination="c1M-Yg-ZS7" eventType="touchUpInside" id="eCR-9p-xmP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAJ-qD-a6L">
+                                <rect key="frame" x="104.5" y="623" width="205" height="29"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="SUBIR PUNTUACION ONLINE">
+                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="botonSubirPulsado:" destination="c1M-Yg-ZS7" eventType="touchUpInside" id="WSI-mb-Vir"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRy-PO-WKW">
-                                <rect key="frame" x="83" y="676" width="248" height="32"/>
+                                <rect key="frame" x="83.5" y="687" width="247.5" height="32"/>
                                 <color key="backgroundColor" red="0.91886746880000003" green="0.2045365274" blue="0.13693207499999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -286,17 +298,20 @@
                             <constraint firstItem="YMi-jk-utk" firstAttribute="bottom" secondItem="Yyn-ob-p7N" secondAttribute="bottom" constant="116" id="9e2-NK-OOA"/>
                             <constraint firstItem="pRy-PO-WKW" firstAttribute="centerX" secondItem="z1P-7z-cHB" secondAttribute="centerX" id="AZG-oh-14E"/>
                             <constraint firstItem="pUw-5U-5em" firstAttribute="leading" secondItem="YMi-jk-utk" secondAttribute="leading" constant="87" id="FO3-Z3-vYY"/>
-                            <constraint firstItem="Yyn-ob-p7N" firstAttribute="top" secondItem="pRy-PO-WKW" secondAttribute="bottom" constant="42" id="HH4-xs-7Gm"/>
+                            <constraint firstItem="Yyn-ob-p7N" firstAttribute="top" secondItem="pRy-PO-WKW" secondAttribute="bottom" constant="31" id="HH4-xs-7Gm"/>
                             <constraint firstItem="Yyn-ob-p7N" firstAttribute="centerX" secondItem="z1P-7z-cHB" secondAttribute="centerX" id="OJ4-JQ-VhF"/>
                             <constraint firstItem="pUw-5U-5em" firstAttribute="top" secondItem="1TH-wu-Ucl" secondAttribute="bottom" constant="12" id="PXA-KV-aHA"/>
                             <constraint firstItem="4Nf-ED-DSh" firstAttribute="centerX" secondItem="z1P-7z-cHB" secondAttribute="centerX" id="Q6j-BP-zen"/>
                             <constraint firstItem="4Nf-ED-DSh" firstAttribute="top" secondItem="YMi-jk-utk" secondAttribute="top" constant="79" id="Vd4-b8-dcB"/>
                             <constraint firstItem="1TH-wu-Ucl" firstAttribute="centerX" secondItem="z1P-7z-cHB" secondAttribute="centerX" id="maN-mv-ggW"/>
+                            <constraint firstItem="xAJ-qD-a6L" firstAttribute="centerX" secondItem="z1P-7z-cHB" secondAttribute="centerX" id="qJx-cw-58j"/>
+                            <constraint firstItem="pRy-PO-WKW" firstAttribute="top" secondItem="xAJ-qD-a6L" secondAttribute="bottom" constant="35" id="w8e-8F-Hj2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bcg-5H-sJI"/>
                     <connections>
                         <outlet property="botonOnline" destination="pRy-PO-WKW" id="tc3-az-ySg"/>
+                        <outlet property="botonSubirPuntuacion" destination="xAJ-qD-a6L" id="FLR-td-y1X"/>
                         <outlet property="resultadoActual" destination="4Nf-ED-DSh" id="LJB-XA-tRG"/>
                         <outlet property="tablaPuntuacion" destination="pUw-5U-5em" id="Pkj-jx-00V"/>
                         <outlet property="vueltaInicio" destination="Yyn-ob-p7N" id="koo-bf-kV0"/>
@@ -323,10 +338,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cmu-bg-0qm">
-                                <rect key="frame" x="87" y="200" width="240" height="128"/>
+                                <rect key="frame" x="87" y="320" width="240" height="353"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="SS0-1w-yLZ"/>
+                                    <constraint firstAttribute="height" constant="353" id="SS0-1w-yLZ"/>
                                     <constraint firstAttribute="width" constant="240" id="Xw2-m0-pJe"/>
                                 </constraints>
                                 <prototypes>
@@ -345,8 +360,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Jca-T5-Esl" firstAttribute="top" secondItem="A2O-ZF-LOH" secondAttribute="top" constant="85" id="BhD-bs-ZKJ"/>
+                            <constraint firstItem="A2O-ZF-LOH" firstAttribute="bottom" secondItem="Cmu-bg-0qm" secondAttribute="bottom" constant="223" id="ORd-NA-yHI"/>
                             <constraint firstItem="Cmu-bg-0qm" firstAttribute="leading" secondItem="A2O-ZF-LOH" secondAttribute="leading" constant="87" id="Szp-Qd-m6x"/>
-                            <constraint firstItem="Cmu-bg-0qm" firstAttribute="top" secondItem="Jca-T5-Esl" secondAttribute="bottom" constant="95" id="ZUf-F8-36B"/>
                             <constraint firstItem="Jca-T5-Esl" firstAttribute="centerX" secondItem="CA5-rK-2Ho" secondAttribute="centerX" id="Zov-pD-L1E"/>
                         </constraints>
                     </view>
@@ -356,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awO-KM-KBX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3703" y="94"/>
+            <point key="canvasLocation" x="3702.898550724638" y="93.75"/>
         </scene>
     </scenes>
     <resources>
@@ -365,6 +380,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

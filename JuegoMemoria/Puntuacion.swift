@@ -24,6 +24,7 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var resultadoActual: UILabel!
     @IBOutlet weak var vueltaInicio: UIButton!
     @IBOutlet weak var botonOnline: UIButton!
+    @IBOutlet weak var botonSubirPuntuacion: UIButton!
     
     
     override func viewDidLoad() {
@@ -53,5 +54,74 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func verPuntuacionesOnline() {
         performSegue(withIdentifier: "PuntuacionOnline", sender: nil)
+    }
+    
+    @IBAction func botonSubirPulsado(_ sender: Any) 
+    {
+        peticionPOST()
+    }
+    
+    func peticionPOST() {
+        
+        var solicitudPOST = URLRequest(url: urlAPI!)
+        solicitudPOST.httpMethod = "POST"
+        solicitudPOST.addValue(apikey, forHTTPHeaderField: "apikey")
+        
+        let parametros = "name=\(usuario.name)&score=\(usuario.score)"
+        solicitudPOST.httpBody = parametros.data(using: .utf8)
+        
+        
+        URLSession.shared.dataTask(with: solicitudPOST) {
+            (data, response, error) in
+            var subirModificar: Bool
+            
+            if error == nil && response {
+                subirModificar = true
+                DispatchQueue.main.async {
+                    self.cambiarEstadoBotonSubirPuntiacion(subirModificar: subirModificar)
+                }
+                print (response)
+                
+            }
+            else {
+                self.peticionPATCH()
+                subirModificar = false
+                DispatchQueue.main.async {
+                    self.cambiarEstadoBotonSubirPuntiacion(subirModificar: subirModificar)
+                }
+            }
+            
+        }.resume()
+    }
+    
+    func cambiarEstadoBotonSubirPuntiacion(subirModificar: Bool) {
+        
+        if subirModificar == true
+        {
+            botonSubirPuntuacion.isEnabled = false
+            botonSubirPuntuacion.alpha = 0.6
+            botonSubirPuntuacion.setTitle("PUNTUACIÓN SUBIDA", for: .normal)
+            
+        } else {
+            
+            botonSubirPuntuacion.isEnabled = false
+            botonSubirPuntuacion.alpha = 0.6
+            botonSubirPuntuacion.setTitle("PUNTUACIÓN MODIFICADA", for: .normal)
+        }
+        
+    }
+    
+    func peticionPATCH() 
+    {
+        urlAPI = URL(string: "https://qhavrvkhlbmsljgmbknr.supabase.co/rest/v1/scores?name=eq.\(usuario.name)")
+        
+        var solicitudPATCH = URLRequest(url: urlAPI!)
+        solicitudPATCH.httpMethod = "PATCH"
+        solicitudPATCH.addValue(apikey, forHTTPHeaderField: "apikey")
+        
+        let parametros = "score=\(usuario.score)"
+        solicitudPATCH.httpBody = parametros.data(using: .utf8)
+        
+        URLSession.shared.dataTask(with: solicitudPATCH)
     }
 }
