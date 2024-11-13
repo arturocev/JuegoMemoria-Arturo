@@ -12,7 +12,9 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let celda = tableView.dequeueReusableCell(withIdentifier: "IdCelda", for: indexPath)
+        
         celda.textLabel?.text = puntuaciones[indexPath.row].name + ": " + puntuaciones[indexPath.row].score.description
+        
         return celda
         
     }

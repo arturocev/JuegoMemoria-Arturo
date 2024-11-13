@@ -8,51 +8,66 @@
 import Foundation
 import UIKit
 class PuntuacionesOnline: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tablaPuntuacionesOnline: UITableView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return puntuaciones.count
+        
+        return users.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celda = tableView.dequeueReusableCell(withIdentifier: "idCeldaPuntuaciones", for: indexPath)
-        celda.textLabel?.text = puntuaciones[indexPath.row].name
-        print(puntuaciones[indexPath.row].name)// Array de String
+        
+        let celda = tableView.dequeueReusableCell(withIdentifier: "celdaOnline", for: indexPath)
+        
+        celda.textLabel?.text = users[indexPath.row].name + ": " + users[indexPath.row].score.description
+        
         return celda
     }
     
-    @IBOutlet weak var tablaPuntuacionesOnline: UITableView!
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        //peticionGET()
+        tablaPuntuacionesOnline.delegate = self
+        tablaPuntuacionesOnline.dataSource = self
+        peticionGET()
     
     }
     
     func peticionGET() {
 
         
-        let url = URL(string: "https://private-088c5a-usuarios4.apiary-mock.com/users")
+        let url = URL(string: "https://qhavrvkhlbmsljgmbknr.supabase.co/rest/v1/scores?select=*")
 
-        URLSession.shared.dataTask(with: url!) {
-        (data, response, error) in
-        if error == nil {
+        let apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFoYXZydmtobGJtc2xqZ21ia25yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA3MjY5MTgsImV4cCI6MjAxNjMwMjkxOH0.Ta-_lXGGwSiUGh0VC8tAFcFQqsqAvB8vvXJjubeQkx8"
+        
+        var solicitudGet = URLRequest(url: url!)
+        solicitudGet.httpMethod = "GET"
+        solicitudGet.addValue(apikey, forHTTPHeaderField: "apikey")
+        
             
-           
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                users.removeAll()
-                for user in json as! [[String: Any]] {
-                    users.append(Usuario(json: user))
-                }
-                
-                DispatchQueue.main.async {
-                    self.tablaPuntuacionesOnline.reloadData()
-                }
-                
-            } catch let errorJson {
-                print(errorJson)
+        URLSession.shared.dataTask(with: solicitudGet) {
+        (data, response, error) in
+            if error == nil {
+                    do {
+                        
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                        users.removeAll()
+                        
+                        for user in json as! [[String: Any]] {
+                            users.append(Usuario(json: user))
+                        }
+                        DispatchQueue.main.async {
+                            self.tablaPuntuacionesOnline.reloadData()
+                        }
+                        
+                    } catch let errorJson {
+                        
+                        print(errorJson)
+                    }
             }
-        }
         }.resume()
         
     }

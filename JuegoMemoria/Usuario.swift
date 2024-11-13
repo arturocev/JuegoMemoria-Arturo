@@ -17,8 +17,8 @@ class Usuario : Decodable {
     }
     
     init(json: [String: Any]) {
-            name = json["user"] as? String ?? ""
-            score = json["pass"] as? Int ?? 0
+            name = json["name"] as? String ?? ""
+            score = json["score"] as? Int ?? 0
     }
     
     func tieneCaracteresEspeciales(texto: String) -> Bool {
