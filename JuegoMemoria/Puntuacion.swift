@@ -74,13 +74,14 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
         URLSession.shared.dataTask(with: solicitudPOST) {
             (data, response, error) in
             var subirModificar: Bool
+            let httpResponse = response as? HTTPURLResponse
             
-            if error == nil && response {
+            if error == nil && httpResponse!.statusCode == 201 {
                 subirModificar = true
                 DispatchQueue.main.async {
                     self.cambiarEstadoBotonSubirPuntiacion(subirModificar: subirModificar)
                 }
-                print (response)
+           
                 
             }
             else {
@@ -90,6 +91,7 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     self.cambiarEstadoBotonSubirPuntiacion(subirModificar: subirModificar)
                 }
             }
+            
             
         }.resume()
     }
@@ -113,15 +115,22 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func peticionPATCH() 
     {
-        urlAPI = URL(string: "https://qhavrvkhlbmsljgmbknr.supabase.co/rest/v1/scores?name=eq.\(usuario.name)")
+        let solicitudPATCH = MutableURLRequest(url: URL(string: "https://qhavrvkhlbmsljgmbknr.supabase.co/rest/v1/scores?name=eq.\(usuario.name)")! as URL)
         
-        var solicitudPATCH = URLRequest(url: urlAPI!)
+
         solicitudPATCH.httpMethod = "PATCH"
         solicitudPATCH.addValue(apikey, forHTTPHeaderField: "apikey")
         
-        let parametros = "score=\(usuario.score)"
-        solicitudPATCH.httpBody = parametros.data(using: .utf8)
+        let jsonPuntuacion: [String: Any] = ["score" : "\(usuario.score)"]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonPuntuacion)
+        solicitudPATCH.httpBody = jsonData
+        print("jsonData: ", String(data: solicitudPATCH.httpBody!, encoding: .utf8) ?? "no body data")
         
-        URLSession.shared.dataTask(with: solicitudPATCH)
+        URLSession.shared.dataTask(with: solicitudPATCH as URLRequest) {
+            data, response, error in
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("responseString = \(responseString)")
+            return
+        }
     }
 }
