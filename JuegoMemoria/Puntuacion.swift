@@ -115,22 +115,21 @@ class Puntuacion: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func peticionPATCH() 
     {
-        let solicitudPATCH = MutableURLRequest(url: URL(string: "https://qhavrvkhlbmsljgmbknr.supabase.co/rest/v1/scores?name=eq.\(usuario.name)")! as URL)
-        
+        let urlPATCH = URL(string:"https://qhavrvkhlbmsljgmbknr.supabase.co/rest/v1/scores?name=eq.\(usuario.name)")
+        var request = URLRequest(url: urlPATCH!)
+        request.httpMethod = "PATCH"
+        request.addValue(apikey, forHTTPHeaderField: "apikey")
 
-        solicitudPATCH.httpMethod = "PATCH"
-        solicitudPATCH.addValue(apikey, forHTTPHeaderField: "apikey")
-        
-        let jsonPuntuacion: [String: Any] = ["score" : "\(usuario.score)"]
-        let jsonData = try? JSONSerialization.data(withJSONObject: jsonPuntuacion)
-        solicitudPATCH.httpBody = jsonData
-        print("jsonData: ", String(data: solicitudPATCH.httpBody!, encoding: .utf8) ?? "no body data")
-        
-        URLSession.shared.dataTask(with: solicitudPATCH as URLRequest) {
-            data, response, error in
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-            print("responseString = \(responseString)")
-            return
+            // JSON Body
+            let bodyObject = [
+                "score": "\(usuario.score)"
+            ]
+        var _: NSError?
+        request.httpBody = try? JSONSerialization.data(withJSONObject: bodyObject)
+
+        let task = URLSession.shared.dataTask(with: request)
+        task.resume()
+      
         }
     }
-}
+

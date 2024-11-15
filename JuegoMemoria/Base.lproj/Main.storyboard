@@ -355,17 +355,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dB-D0-osM">
+                                <rect key="frame" x="170.5" y="779.5" width="73" height="28.5"/>
+                                <color key="backgroundColor" red="0.91886746880000003" green="0.2045365274" blue="0.13693207499999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="VOLVER">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="BotonVolverPulsado:" destination="Ang-fz-hEW" eventType="touchUpInside" id="0GI-Jp-95o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A2O-ZF-LOH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Jca-T5-Esl" firstAttribute="top" secondItem="A2O-ZF-LOH" secondAttribute="top" constant="85" id="BhD-bs-ZKJ"/>
                             <constraint firstItem="A2O-ZF-LOH" firstAttribute="bottom" secondItem="Cmu-bg-0qm" secondAttribute="bottom" constant="223" id="ORd-NA-yHI"/>
+                            <constraint firstItem="8dB-D0-osM" firstAttribute="centerX" secondItem="CA5-rK-2Ho" secondAttribute="centerX" id="SDp-UV-enw"/>
                             <constraint firstItem="Cmu-bg-0qm" firstAttribute="leading" secondItem="A2O-ZF-LOH" secondAttribute="leading" constant="87" id="Szp-Qd-m6x"/>
                             <constraint firstItem="Jca-T5-Esl" firstAttribute="centerX" secondItem="CA5-rK-2Ho" secondAttribute="centerX" id="Zov-pD-L1E"/>
+                            <constraint firstItem="A2O-ZF-LOH" firstAttribute="bottom" secondItem="8dB-D0-osM" secondAttribute="bottom" constant="88" id="lRQ-WK-ooU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="BotonVolver" destination="8dB-D0-osM" id="zYe-XH-2mL"/>
                         <outlet property="tablaPuntuacionesOnline" destination="Cmu-bg-0qm" id="bAm-ul-zID"/>
                     </connections>
                 </viewController>

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 class PuntuacionesOnline: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tablaPuntuacionesOnline: UITableView!
+    @IBOutlet weak var BotonVolver: UIButton!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -66,5 +67,9 @@ class PuntuacionesOnline: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }.resume()
         
+    }
+    @IBAction func BotonVolverPulsado(_ sender: Any) 
+    {
+        self.dismiss(animated: false)
     }
 }
